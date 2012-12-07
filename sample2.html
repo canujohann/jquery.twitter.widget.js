@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery.twitter.widget.js</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="./jquery.twitter.widget.min.js"></script>
+	<script>
+		$(function() {
+			var option = {
+				screen_name: 'anyone',
+				speed: 10,
+				exclude_replies: true,
+				include_rts: false,
+				dateformat: 'Y年M月D日 h時m分s秒',
+				path: './api/',
+				src: {
+					header: "<div class='clearfix'><strong>$icon$</strong><span>$screen_name$</span><span>($name$)</span></div><p>$description$</p>",
+					body: "<div class='tw'><span class='tw_text'>$text$</span> <span class='tw_date'>$created_at$</span><div>$action$</div></div>",
+					footer: "<div class='clearfix'>$logo$<span>Twitter</span></div>",
+					reply: "<img src='./reply.png' alt='' title='' />",
+					retweet: "<img src='./retweet.png' alt='' title='' />",
+					favorite: "<img src='./favorite.png' alt='' title='' />"
+				}
+			};
+			$('#twitter').twitterWidget(option);
+		});
+	</script>
+</head>
+<body>
+	<div id="twitter"></div>
+</body>
+</html>

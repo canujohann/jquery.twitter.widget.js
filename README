@@ -1,0 +1,66 @@
+This is a jQuery plugin providing 'Twitter widget'.
+'twitterWidget()' method starts loading and displaying tweets.
+The source formed by this plugin is based on the property that you provide.
+
+All of properties and reserved words are followings;
+
+[Properties]
+screen_name: The screen name of the target user / ex: 'twitterapi'
+count: number Specifies the number of tweets to try and retrieve, up to a maximum of 200 / ex: 100
+speed: Interval to display each tweets (seconds) / ex: 10
+exclude_replies: Prevent replies from appearing in the returned timeline / true or false
+include_rts: The timeline will strip any native retweets / true or false
+dateformat: Format of date / ex: 'Y/M/D h:m:s'
+path: Path to 'twitter.php' / ex: './api/'
+src: Source of each parts
+src.header: Header source / ex: "<span>$screen_name$</span>"
+src.body: Main source / ex: "<span>$text$</span><span>$created_at$</span>"
+src.footer: Footer source / ex: "<span>$logo$</span>"
+src.reply: Reply button source / ex: "Re:"
+src.retweet: Retweet button source / ex: "RT"
+src.favorite: Favorite button source / ex: "<img src='./images/favorite.png' alt='' title'' />"
+
+[Reserved words]
+$icon$: User icon
+$screen_name$: Screen name
+$name$: Display name
+$description$: Description of user profile (includes 'URL', when the user defines).
+$text$: Tweet text
+$created_at$: Date
+$logo$: Twitter logo
+$reply$: Reply button
+$retweet$: Retweet button
+$favorite$: Favorite button
+$action$: Includes $reply$, $retweet$, and $favorite$.
+
+
+Like this;
+
+[html]
+<div id="twitter"></div>
+
+[twitter.php]
+You have to upload 'twitter.php' to a directory.
+
+[jQuery]
+$(function() {
+	var option = {
+		screen_name: 'twitterapi',
+		speed: 10,
+		exclude_replies: true,
+		include_rts: false,
+		dateformat: 'Y/M/D h:m:s',
+		path: './api/',
+		src: {
+			header: "<div class='clearfix'><strong>$icon$</strong><span>$screen_name$</span><span>($name$)</span></div><p>$description$</p>",
+			body: "<div class='tw'><span class='tw_text'>$text$</span> <span class='tw_date'>$created_at$</span><div>$action$</div></div>",
+			footer: "<div class='clearfix'>$logo$<span>Twitter</span></div>",
+			reply: "<img src='./reply.png' alt='' title='' />",
+			retweet: "<img src='./retweet.png' alt='' title='' />",
+			favorite: "<img src='./favorite.png' alt='' title='' />"
+		}
+	};
+	$('#twitter').twitterWidget(option);
+});
+
+Thank you.
