@@ -16,7 +16,7 @@ var twitterWidget = {
 			include_rts: true
 		};
 		this.option = $.extend(defaults, option);
-		
+
 		var url = this.option.path + 'twitter.php';
 		url += '?screen_name=' + this.option.screen_name;
 		url += '&count=' + this.option.count;

@@ -1,13 +1,10 @@
 This is a jQuery plugin providing 'Twitter widget'.
-'twitterWidget()' method starts loading and displaying tweets.
-The source formed by this plugin is based on the property that you provide.
-
-All of properties and reserved words are followings;
+'twitterWidget()' method that loads and displays tweets based on the properties provided below;
 
 [Properties]
 screen_name: The screen name of the target user / ex: 'twitterapi'
 count: number Specifies the number of tweets to try and retrieve, up to a maximum of 200 / ex: 100
-speed: Interval to display each tweets (seconds) / ex: 10
+speed: Interval (seconds) / ex: 10
 exclude_replies: Prevent replies from appearing in the returned timeline / true or false
 include_rts: The timeline will strip any native retweets / true or false
 dateformat: Format of date / ex: 'Y/M/D h:m:s'
@@ -34,13 +31,13 @@ $favorite$: Favorite button
 $action$: Includes $reply$, $retweet$, and $favorite$.
 
 
-Like this;
+Here's a specific example;
 
 [html]
 <div id="twitter"></div>
 
 [twitter.php]
-You have to upload 'twitter.php' to a directory.
+Uploading 'twitter.php' to the installed directory is required.
 
 [jQuery]
 $(function() {
@@ -63,4 +60,4 @@ $(function() {
 	$('#twitter').twitterWidget(option);
 });
 
-Thank you.
+Hope this helps and thanks for reading!
