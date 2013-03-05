@@ -10,12 +10,12 @@ _twitterWidget()_ にプロパティを渡すことで、ウィジェットを�
 * speed: 次のツイートを表示するまでの時間 / 数値 / 例 10  
 * exclude_replies: リプライのツイートを排除するかどうか / true もしくは false  
 * include_rts: リツイートを表示するかどうか / true もしくは false  
-* dateformat: 表示する日付のフォーマット / 例 'Y/M/D h:m:s'  
+* dateformat: 表示する日付のフォーマット / 例 'Y / M / D h : m : s'  
 * path: 'twitter.php' を設置したパス / 例 './api/'  
 * src: ツイートのレイアウト  
-* src.header: ヘッダ部分 / 例 "<span>$screen_name$</span>"  
-* src.body: メイン部分 / 例 "<span>$text$</span><span>$created_at$</span>"  
-* src.footer: フッタ部分 / 例 "<span>$logo$</span>"  
+* src.header: ヘッダ部分 / 例 "&lt;span&gt;$screen_name$&lt;/span&gt;"  
+* src.body: メイン部分 / 例 "&lt;span&gt;$text$</span><span>$created_at$&lt;/span&gt;"  
+* src.footer: フッタ部分 / 例 "&lt;span&gt;$logo$&lt;/span&gt;"  
 * src.reply: リプライ部分 / 例 "Re:"  
 * src.retweet: リツイート部分 / 例 "RT"  
 * src.favorite: お気に入り部分 / 例 "&lt;img src='./images/favorite.png' alt='' title'' /&gt;"  
