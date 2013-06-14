@@ -10,6 +10,7 @@ _twitterWidget()_ にプロパティを渡すことで、ウィジェットを�
 * speed: 次のツイートを表示するまでの時間 / 数値 / 例 10  
 * exclude_replies: リプライのツイートを排除するかどうか / true もしくは false  
 * include_rts: リツイートを表示するかどうか / true もしくは false  
+* reverse: 古いツイートから表示するかどうか / true もしくは false / デフォルトでは false
 * dateformat: 表示する日付のフォーマット / 例 'Y / M / D h : m : s'  
 * path: 'twitter.php' を設置したパス / 例 './api/'  
 * src: ツイートのレイアウト  
