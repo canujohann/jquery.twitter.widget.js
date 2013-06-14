@@ -16,7 +16,8 @@ var twitterWidget = {
 			speed: 10,
 			count: 100,
 			exclude_replies: false,
-			include_rts: true
+			include_rts: true,
+			reverse: false
 		};
 		this.option = $.extend(defaults, option);
 
@@ -41,20 +42,14 @@ var twitterWidget = {
 	},
 	set: function(f) {
 		this.items = [];
-		for (var i = 0; i < f.length; i++) {
-			var created = f[i].created_at.split(' ');
-			var date = new Date(created[1] + ' ' + created[2] + ', ' + created[5] + ' ' + created[3]);
-			var date = new Date(date.getTime() + 9 * 60 * 60 * 1000);
-			var format = this.option.dateformat;
-			this.items[this.items.length] = {
-				created_at: (this.option.dateformat) ? format.replace('Y', date.getFullYear()).replace('M', this.fixFormat(date.getMonth()) + 1).replace('D', this.fixFormat(date.getDate())).replace('h', this.fixFormat(date.getHours())).replace('m', this.fixFormat(date.getMinutes())).replace('s', this.fixFormat(date.getSeconds())) : f[i].created_at,
-				id: f[i].id,
-				id_str: f[i].id_str,
-				text: this.link.enable(f[i].text, f[i].entities),
-				screen_name: f[i].user.screen_name,
-				name: f[i].user.name,
-				profile_image_url: f[i].user.profile_image_url
-			};
+		if (this.option.reverse) {
+			for (var i = f.length - 1; i >= 0; i--) {
+				this.setData(f, i);
+			}
+		} else {
+			for (var i = 0; i < f.length; i++) {
+				this.setData(f, i);
+			}
 		}
 		this.user = {
 			description: this.link.enable(f[0].user.description, f[0].user.entities.description),
@@ -79,6 +74,21 @@ var twitterWidget = {
 			}
 			twitterWidget.create.init(twitterWidget.items[0], 'body');
 		}, this.option.speed * 1000);
+	},
+	setData: function(f, i) {
+		var created = f[i].created_at.split(' ');
+		var date = new Date(created[1] + ' ' + created[2] + ', ' + created[5] + ' ' + created[3]);
+		var date = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+		var format = this.option.dateformat;
+		this.items[this.items.length] = {
+			created_at: (this.option.dateformat) ? format.replace('Y', date.getFullYear()).replace('M', this.fixFormat(date.getMonth() + 1)).replace('D', this.fixFormat(date.getDate())).replace('h', this.fixFormat(date.getHours())).replace('m', this.fixFormat(date.getMinutes())).replace('s', this.fixFormat(date.getSeconds())) : f[i].created_at,
+			id: f[i].id,
+			id_str: f[i].id_str,
+			text: this.link.enable(f[i].text, f[i].entities),
+			screen_name: f[i].user.screen_name,
+			name: f[i].user.name,
+			profile_image_url: f[i].user.profile_image_url
+		};
 	},
 	link: {
 		enable: function(text, option) {
