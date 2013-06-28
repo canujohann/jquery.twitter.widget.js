@@ -47,7 +47,7 @@ var twitterWidget = {
 				this.setData(f, i);
 			}
 		} else {
-			for (var i = 0; i < f.length; i++) {
+			for (var i = 0, l = f.length; i < l; i++) {
 				this.setData(f, i);
 			}
 		}
@@ -94,7 +94,7 @@ var twitterWidget = {
 		enable: function(text, option) {
 			var links = [];
 			for (var i in option) {
-				for (var x = 0; x < option[i].length; x++) {
+				for (var x = 0, l = option[i].length; x < l; x++) {
 					links[links.length] = {
 						type: (option[i][x].text) ? 'hash' : (option[i][x].url) ? 'url' : 'mention',
 						text: (option[i][x].text) ? option[i][x].text : (option[i][x].url) ? option[i][x].url : option[i][x].screen_name,
